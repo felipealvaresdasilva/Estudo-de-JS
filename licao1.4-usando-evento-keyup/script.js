@@ -1,18 +1,26 @@
 const input = document.getElementById('senha');
-const textoAviso = document.getElementById('aviso');
+const submit = document.getElementById('botao');
 
-textoAviso.style.display = 'none';
+function mandaMensagem(texto) {
+    let sanitizaTexto = texto.trim()
+    if (sanitizaTexto.length > 0) {
+        console.log(sanitizaTexto);
+    }
+}
 
 input.addEventListener('keyup', (event) => {
-    if (event.key.toLowerCase() == 'capslock') {
 
-        if (textoAviso.style.display == 'none') {
+    if (event.key == 'CapsLock') {
+        alert('CapsLock apertado!!!');
+    }
 
-            textoAviso.style.display = 'block';
-        }
-
-        else {
-            textoAviso.style.display = 'none';
-        }
+    if (event.key.toLowerCase() == 'enter') {
+        mandaMensagem(input.value);
+        input.value = '';
     }
 });
+
+submit.addEventListener('click', () => {
+    mandaMensagem(input.value);
+    input.value = '';
+})
